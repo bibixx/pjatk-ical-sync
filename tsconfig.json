@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "Node",
     "lib": ["es2021"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "typeRoots" : ["./node_modules/@types"]
-  }
+    "noEmit": true
+  },
+  "include": ["src/index.ts"]
 }

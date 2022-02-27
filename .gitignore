@@ -1,2 +1,4 @@
-.vercel
 .env
+logs
+data
+docker-compose.yml

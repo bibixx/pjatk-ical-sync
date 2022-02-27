@@ -1,5 +1,5 @@
-import { VercelRequestQuery } from "@vercel/node";
 import dayjs from "dayjs";
+import { CALENDAR_PASSWORD } from "./env";
 
 interface Args {
   from: dayjs.Dayjs
@@ -13,9 +13,7 @@ const deArrayify = <T>(arrayLike: T[] | T) => Array.isArray(arrayLike) ? arrayLi
 const defaultFrom = dayjs().subtract(1, 'year')
 const defaultTo = dayjs().add(1, 'year')
 
-const CALENDAR_PASSWORD = process.env.CALENDAR_PASSWORD
-
-export const getArgs = (query: VercelRequestQuery): Args => {
+export const getArgs = (query: Record<string, string | string[]>): Args => {
   const from = deArrayify(query.from) as string | undefined;
   const to = deArrayify(query.to) as string | undefined
   const debug = deArrayify(query.debug) as string | undefined
