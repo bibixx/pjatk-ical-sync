@@ -2,7 +2,8 @@
   "name": "local",
   "version": "1.0.0",
   "scripts": {
-    "start": "yarn build && node --enable-source-maps dist/bundle.js",
+    "start": "node --enable-source-maps dist/bundle.js",
+    "dev": "yarn build && yarn start",
     "type-check": "tsc",
     "build": "esbuild src/index.ts --bundle --sourcemap --platform=node --target=node16 --outfile=dist/bundle.js"
   },
