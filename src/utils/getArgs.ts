@@ -25,7 +25,7 @@ export const getArgs = (query: Record<string, string | string[]>): Args => {
 
   return {
     from: from ? dayjs(from) : defaultFrom,
-    to: to ? dayjs() : defaultTo,
+    to: to ? dayjs(to) : defaultTo,
     debug: debug === 'true',
     authenticated: hasPassword
       ? password !== undefined && password === CALENDAR_PASSWORD
