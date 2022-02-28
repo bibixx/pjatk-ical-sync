@@ -44,7 +44,7 @@ fastify.get('/', async (request, response) => {
 
    if (!authenticated && session === undefined) {
      return response
-       .status(503)
+       .status(403)
        .send('Forbidden');
    }
 
@@ -56,9 +56,17 @@ fastify.get('/', async (request, response) => {
     cookieJar.setCookie(`ASP.NET_SessionId=${session}`);
   }
 
-  const calResponse = await (await getCal(cookieJar, from, to)).text()
+  const calResponse = await getCal(cookieJar, from, to)
+  const contentType = calResponse.headers.get('Content-Type');
 
-  const newICal = regenerateICal(calResponse, debug)
+  if (!contentType || !contentType?.startsWith('text/calendar')) {
+    response.status(401)
+    response.send('Given session is invalid.')
+    return;
+  }
+
+  const calResponseContent = await calResponse.text()
+  const newICal = regenerateICal(calResponseContent, debug)
 
   if (!debug) {
     response.header('Content-Type', 'text/calendar')
