@@ -7,6 +7,8 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
+RUN yarn run build
+
 CMD ["yarn", "run", "start"]
 
 EXPOSE 3000
