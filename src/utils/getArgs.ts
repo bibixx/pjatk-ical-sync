@@ -6,6 +6,7 @@ interface Args {
   to: dayjs.Dayjs
   debug: boolean
   authenticated: boolean
+  session: string | undefined
 }
 
 const deArrayify = <T>(arrayLike: T[] | T) => Array.isArray(arrayLike) ? arrayLike[0] : arrayLike
@@ -18,6 +19,7 @@ export const getArgs = (query: Record<string, string | string[]>): Args => {
   const to = deArrayify(query.to) as string | undefined
   const debug = deArrayify(query.debug) as string | undefined
   const password = deArrayify(query.password) as string | undefined
+  const session = deArrayify(query.session) as string | undefined
 
   const hasPassword = CALENDAR_PASSWORD !== undefined
 
@@ -27,6 +29,7 @@ export const getArgs = (query: Record<string, string | string[]>): Args => {
     debug: debug === 'true',
     authenticated: hasPassword
       ? password !== undefined && password === CALENDAR_PASSWORD
-      : true
+      : true,
+    session
   }
 }

@@ -19,7 +19,7 @@ if (!fs.existsSync(logsPath)) {
 
 const fastify = Fastify({
   logger: {
-    redact: ['req.query.password'],
+    redact: ['req.query.password', 'req.query.session'],
     stream: pino.multistream([
       { stream: PinoPretty({}) },
       { stream: fs.createWriteStream(path.resolve(logsPath, 'all.log')) },
@@ -40,16 +40,22 @@ const fastify = Fastify({
 })
 
 fastify.get('/', async (request, response) => {
-  const { from, to, debug, authenticated } = getArgs(request.query as any)
+  const { from, to, debug, authenticated, session } = getArgs(request.query as any)
 
-   if (!authenticated) {
+   if (!authenticated && session === undefined) {
      return response
        .status(503)
        .send('Forbidden');
    }
 
   const cookieJar = new CookieJar()
-  await login(cookieJar)
+
+  if (session === undefined) {
+    await login(cookieJar)
+  } else {
+    cookieJar.setCookie(`ASP.NET_SessionId=${session}`);
+  }
+
   const calResponse = await (await getCal(cookieJar, from, to)).text()
 
   const newICal = regenerateICal(calResponse, debug)
