@@ -9,7 +9,7 @@ export const regenerateICal = (icsFileContents: string, debug: boolean) => {
 
   const calendar = iCalGenerator({
     name: 'PJATK',
-    url: 'http://192.168.92.206:8080/out.ics',
+    url: 'https://ical.zdaj.se',
   });
   calendar.prodId({
     company: 'bibixx',
