@@ -1,43 +1,11 @@
-import Fastify, { FastifyLoggerOptions } from 'fastify'
-import fs from 'node:fs'
-import path from 'node:path'
-import { pino } from 'pino';
-import PinoPretty from 'pino-pretty';
 import { CookieJar } from 'cookiejar';
-
 import './utils/setup'
+
+import { fastify, runFastify } from './utils/fastify'
 import { regenerateICal } from './utils/regenerateICal/regenerateICal';
 import { getArgs } from './utils/getArgs';
 import { login } from './utils/scrape/login';
 import { getCal } from './utils/scrape/getCal';
-import { PASSWORD, USERNAME } from './utils/env';
-
-const logsPath = path.resolve('logs')
-if (!fs.existsSync(logsPath)) {
-  fs.mkdirSync(logsPath)
-}
-
-const fastify = Fastify({
-  logger: {
-    redact: ['req.query.password', 'req.query.session'],
-    stream: pino.multistream([
-      { stream: PinoPretty({}) },
-      { stream: fs.createWriteStream(path.resolve(logsPath, 'all.log')) },
-      { stream: fs.createWriteStream(path.resolve(logsPath, 'error.log')), level: 'error' }
-    ]),
-    serializers: {
-      req: (request) => {
-        return {
-          method: request.method,
-          path: request.routerPath,
-          query: request.query,
-          parameters: request.params,
-          headers: request.headers
-        };
-      }
-    }
-  } as FastifyLoggerOptions
-})
 
 fastify.get('/', async (request, response) => {
   const { from, to, debug, authenticated, session } = getArgs(request.query as any)
@@ -75,22 +43,4 @@ fastify.get('/', async (request, response) => {
   response.send(newICal)
 })
 
-
-if (!USERNAME) {
-  fastify.log.error('Username hasn\'t been setup yet.')
-  process.exit(1)
-}
-
-if (!PASSWORD) {
-  fastify.log.error('Password hasn\'t been setup yet.')
-  process.exit(1)
-}
-
-fastify.listen({
-  port: 3000,
-}, (err) => {
-  if (err) {
-    fastify.log.error(err)
-    process.exit(1)
-  }
-})
+runFastify()
