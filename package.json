@@ -17,6 +17,8 @@
     "fastify": "^3.27.2",
     "ical": "^0.8.0",
     "ical-generator": "^3.2.1",
+    "json-stable-stringify": "^1.0.1",
+    "md5": "^2.3.0",
     "node-fetch": "^2.6.6",
     "pino": "^7.8.0",
     "pino-pretty": "^7.5.1"
@@ -24,6 +26,8 @@
   "devDependencies": {
     "@types/cookiejar": "^2.1.2",
     "@types/ical": "^0.8.0",
+    "@types/json-stable-stringify": "^1.0.34",
+    "@types/md5": "^2.3.2",
     "@types/node": "^17.0.21",
     "@types/node-fetch": "^2.6.1",
     "esbuild": "^0.14.23",

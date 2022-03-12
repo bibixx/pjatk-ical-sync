@@ -3,6 +3,7 @@ import iCalGenerator from 'ical-generator';
 import { getDates } from './getDates';
 import { getDescription } from './getDescription';
 import { parseSummary } from './parseSummary';
+import { generateEvent } from './generateEvent'
 
 export const regenerateICal = (icsFileContents: string, debug: boolean) => {
   const iCalData = iCal.parseICS(icsFileContents)
@@ -28,12 +29,10 @@ export const regenerateICal = (icsFileContents: string, debug: boolean) => {
       const { subject, className } = parseSummary(entry.summary)
       const { start, end, adjustedBy } = getDates(entry.start, entry.end)
 
-      const summarySuffix = debug ? ` ${Math.random()}` : ''
-
-      calendar.createEvent({
+      generateEvent(calendar, {
         start: start.format('YYYY-MM-DDTHH:mm:ssZ'),
         end: end.format('YYYY-MM-DDTHH:mm:ssZ'),
-        summary: subject + summarySuffix,
+        summary: subject,
         description: adjustedBy !== undefined
           ? getDescription(start, end, adjustedBy)
           : undefined,
