@@ -32,7 +32,7 @@ export const regenerateICal = (icsFileContents: string, debug: boolean) => {
       generateEvent(calendar, {
         start: start.format('YYYY-MM-DDTHH:mm:ssZ'),
         end: end.format('YYYY-MM-DDTHH:mm:ssZ'),
-        summary: subject,
+        summary: `(${className}) ${subject}`,
         description: adjustedBy !== undefined
           ? getDescription(start, end, adjustedBy)
           : undefined,
