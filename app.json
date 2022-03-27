@@ -3,15 +3,18 @@
   "env": {
     "USERNAME": {
       "description": "Your PJAIT username",
-      "required": true
+      "required": true,
+      "order": 1
     },
     "PASSWORD": {
       "description": "Your PJAIT password",
-      "required": true
+      "required": true,
+      "order": 2
     },
     "CALENDAR_PASSWORD": {
       "description": "Password for the subscription endpoint. Set only if you want to have it",
-      "required": false
+      "required": false,
+      "order": 3
     }
   },
   "options": {
