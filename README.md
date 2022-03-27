@@ -192,11 +192,10 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Development
 The project is build using TypeScript hence needs the transpilation to JavaScript to be able to be run using Node.js. The `yarn dev` command runs the [`esbuild`](https://esbuild.github.io/) in a watch mode and starts the app with `node` using [`nodemon`](https://nodemon.io/) which provides automatic restarts when the files change.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
