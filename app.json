@@ -8,6 +8,10 @@
     "PASSWORD": {
       "description": "Your PJAIT password",
       "required": true
+    },
+    "CALENDAR_PASSWORD": {
+      "description": "Password for the subscription endpoint. Set only if you want to have it",
+      "required": false
     }
   },
   "options": {

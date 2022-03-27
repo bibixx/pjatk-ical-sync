@@ -32,23 +32,23 @@
     <img src="images/logo.svg" alt="" width="80" height="80">
   </a>
 
-<h3 align="center">PJAIT Class Schedule Sync</h3>
+  <h3 align="center">PJAIT Class Schedule Sync</h3>
 
   <p align="center">
     Sync your calendar with <a href="https://www.pja.edu.pl/en/">PJAIT</a>'s schedule
     <br />
-    <br />
-    <a href="https://github.com/bibixx/pjatk-ical-sync/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/bibixx/pjatk-ical-sync/issues">Request Feature</a>
   </p>
 </div>
 
-<div align="center">
-  <a href="https://deploy.cloud.run">
-    <img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" />
+<p align="center">
+  <a href="https://deploy.cloud.run?git_repo=https://github.com/bibixx/pjatk-ical-sync" target="_blank">
+    <img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" height="40" />
   </a>
-</div>
+  <br />
+  <a href="#deploy-to-google-cloud-platform-gcp">
+    <strong>For help with the deployment see Deploy to Google Cloud Platform (GCP) section</strong>
+  </a>
+</p>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -56,6 +56,11 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#deploy-to-google-cloud-platform-gcp">
+      Deploy to Google Cloud Platform (GCP) section
+      </a>
     </li>
     <li>
       <a href="#setup">Setup</a>
@@ -80,12 +85,29 @@ It logs you in, downloads the schedule in iCal format, fixes the format (as the 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Deploy to Google Cloud Platform (GCP)
+1. Log in to your Google Account
+2. Go to https://console.cloud.google.com/projectcreate to create a project (You can leave all of the settings default)
+3. Set up billing account on GCP https://console.cloud.google.com/billing/create<br />
+    **IMPORTANT! The GCP has a free tier for the Cloud Run functions which we'll be using. This application will definitely not exceed this tier.**<br />
+    <em>NOTE: This software and guide are provided "as is", without warranty of any kind.</em>
+4. Click on the button below <br />
+  <div align="center">
+    <a href="https://deploy.cloud.run?git_repo=https://github.com/bibixx/pjatk-ical-sync" target="_blank">
+      <img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" height="32" />
+    </a>
+  </div>
+
+5. Done 🎉
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- SETUP -->
 ## Setup
 
 This project is fully dockerized and can be deployed in the matter of minutes. The [Docker](#docker) section describes how to do it.
 
-Alternatively you can run the whole app on the host. This is described in the [Host section](#host)
+Alternatively you can run the whole app on the host. This is described in the [Host section](#host).
 
 ### Docker
 #### Prerequisites
@@ -134,7 +156,7 @@ Alternatively you can run the whole app on the host. This is described in the [H
   ```bash
   yarn start
   ```
-4. Add the calendar subscription to your calendar app of choice. The url for the subscription is `http://localhost:3000`. For additional options to this endpoint please see the [Options section](#options)
+4. Add the calendar subscription to your calendar app of choice. The url for the subscription is `http://localhost:3000`. For additional options to this endpoint please see the [Options section](#options).
     * Apple Calendar: [support.apple.com](https://support.apple.com/en-us/HT202361)
     * Google Calendar, _Use a link to add a public calendar_ section: [support.google.com](https://support.google.com/calendar/answer/37100?hl=en)
     * Outlook, _Subscribe to a calendar_ section: [support.microsoft.com](https://support.microsoft.com/en-us/topic/cff1429c-5af6-41ec-a5b4-74f2c278e98c)
