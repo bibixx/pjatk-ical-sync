@@ -2,7 +2,7 @@
   "name": "pjatk-ical-sync",
   "env": {
     "USERNAME": {
-      "description": "Your PJAIT username",
+      "description": "Your PJAIT username (sXXXXX)",
       "required": true,
       "order": 1
     },
