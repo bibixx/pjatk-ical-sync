@@ -8,7 +8,7 @@ import { login } from './utils/scrape/login';
 import { getCal } from './utils/scrape/getCal';
 
 fastify.get('/', async (request, response) => {
-  const { from, to, debug, authenticated, session } = getArgs(request.query as any)
+  const { from, to, debug, debugPrefix, authenticated, session } = getArgs(request.query as any)
 
    if (!authenticated && session === undefined) {
      return response
@@ -34,7 +34,7 @@ fastify.get('/', async (request, response) => {
   }
 
   const calResponseContent = await calResponse.text()
-  const newICal = regenerateICal(calResponseContent, debug)
+  const newICal = regenerateICal(calResponseContent, debugPrefix)
 
   if (!debug) {
     response.header('Content-Type', 'text/calendar')
