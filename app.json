@@ -1,0 +1,16 @@
+{
+  "name": "pjatk-ical-sync",
+  "env": {
+    "USERNAME": {
+      "description": "Your PJAIT username",
+      "required": true
+    },
+    "PASSWORD": {
+      "description": "Your PJAIT password",
+      "required": true
+    }
+  },
+  "options": {
+    "allow-unauthenticated": true
+  }
+}

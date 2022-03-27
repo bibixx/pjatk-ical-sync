@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { pino } from 'pino';
 import PinoPretty from 'pino-pretty';
-import { PASSWORD, USERNAME } from './env';
+import { PASSWORD, PORT, USERNAME } from './env';
 
 const logsPath = path.resolve('logs')
 if (!fs.existsSync(logsPath)) {
@@ -44,7 +44,7 @@ export const runFastify = () => {
   }
 
   fastify.listen({
-    port: 3000,
+    port: PORT,
   }, (err) => {
     if (err) {
       fastify.log.error(err)

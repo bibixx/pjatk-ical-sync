@@ -44,7 +44,11 @@
   </p>
 </div>
 
-
+<div align="center">
+  <a href="https://deploy.cloud.run">
+    <img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" />
+  </a>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
