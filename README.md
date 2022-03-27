@@ -91,7 +91,7 @@ It logs you in, downloads the schedule in iCal format, fixes the format (as the 
 3. Set up billing account on GCP https://console.cloud.google.com/billing/create<br />
     **IMPORTANT! The GCP has a free tier for the Cloud Run functions which we'll be using. This application will definitely not exceed this tier.**<br />
     <em>NOTE: This software and guide are provided "as is", without warranty of any kind.</em>
-4. Click on the button below <br />
+4. Click on the button below and follow the instructions. <br />
   <div align="center">
     <a href="https://deploy.cloud.run?git_repo=https://github.com/bibixx/pjatk-ical-sync" target="_blank">
       <img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" height="32" />
