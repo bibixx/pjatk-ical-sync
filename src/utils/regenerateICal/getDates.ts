@@ -8,8 +8,8 @@ export const getDates = (start: Date | undefined, end: Date | undefined) => {
   const dstTransitionOffset = getDayOffset(startDate, 'Europe/Warsaw')
 
   return {
-    start: startDate.add(dstTransitionOffset, 'minutes'),
-    end: endDate.add(dstTransitionOffset, 'minutes'),
+    start: startDate.add(dstTransitionOffset, 'minutes').add(1, 'hour'),
+    end: endDate.add(dstTransitionOffset, 'minutes').add(1, 'hour'),
     adjustedBy: dstTransitionOffset !== 0
       ? dstTransitionOffset / 60
       : undefined
