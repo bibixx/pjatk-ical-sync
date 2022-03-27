@@ -6,6 +6,7 @@ import { regenerateICal } from './utils/regenerateICal/regenerateICal';
 import { getArgs } from './utils/getArgs';
 import { login } from './utils/scrape/login';
 import { getCal } from './utils/scrape/getCal';
+import { getHostnameUrl } from './utils/getHostnameUrl';
 
 fastify.get('/', async (request, response) => {
   const { from, to, debug, debugPrefix, authenticated, session } = getArgs(request.query as any)
@@ -33,8 +34,9 @@ fastify.get('/', async (request, response) => {
     return;
   }
 
+  const calendarUrl = getHostnameUrl(request.protocol, request.hostname)
   const calResponseContent = await calResponse.text()
-  const newICal = regenerateICal(calResponseContent, debugPrefix)
+  const newICal = regenerateICal(calResponseContent, calendarUrl, debugPrefix)
 
   if (!debug) {
     response.header('Content-Type', 'text/calendar')

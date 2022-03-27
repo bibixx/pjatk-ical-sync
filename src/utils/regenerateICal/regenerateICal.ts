@@ -6,16 +6,16 @@ import { parseSummary } from './parseSummary';
 import { generateEvent } from './generateEvent'
 import dayjs from 'dayjs';
 
-export const regenerateICal = (icsFileContents: string, withDebugPrefix: boolean) => {
+export const regenerateICal = (icsFileContents: string, calendarUrl: string, withDebugPrefix: boolean) => {
   const iCalData = iCal.parseICS(icsFileContents)
 
   const calendar = iCalGenerator({
     name: 'PJATK',
-    url: 'https://ical.zdaj.se'
+    url: calendarUrl
   });
   calendar.prodId({
     company: 'bibixx',
-    product: 'PJATK',
+    product: 'pjatk-ical-sync',
     language: 'PL'
   });
 
