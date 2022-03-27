@@ -46,11 +46,7 @@
   </a>
   <br />
   <a href="#deploy-to-google-cloud-platform-gcp">
-    <small>
-      <strong>
-        For help with the deployment see Deploy to Google Cloud Platform (GCP) section
-      </strong>
-    </small>
+    <strong>For help with the deployment see Deploy to Google Cloud Platform (GCP) section</strong>
   </a>
 </p>
 
