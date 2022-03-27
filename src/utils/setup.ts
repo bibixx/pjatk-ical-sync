@@ -7,3 +7,5 @@ config()
 
 dayjs.extend(timezone)
 dayjs.extend(utc)
+
+process.env.TZ = 'Etc/Universal';

@@ -11,8 +11,7 @@ export const regenerateICal = (icsFileContents: string, withDebugPrefix: boolean
 
   const calendar = iCalGenerator({
     name: 'PJATK',
-    url: 'https://ical.zdaj.se',
-    timezone: 'Europe/Warsaw'
+    url: 'https://ical.zdaj.se'
   });
   calendar.prodId({
     company: 'bibixx',
