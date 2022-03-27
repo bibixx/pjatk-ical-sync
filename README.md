@@ -103,11 +103,11 @@ It logs you in, downloads the schedule in iCal format, fixes the format (as the 
     [ ✓ ] Your application is now live here:
             https://pjatk-ical-sync-abcdefghi.a.run.app
     ```
-
-7. . For additional options to this endpoint please see the [Options section](#options)
     * Apple Calendar: [support.apple.com](https://support.apple.com/en-us/HT202361)
     * Google Calendar, _Use a link to add a public calendar_ section: [support.google.com](https://support.google.com/calendar/answer/37100?hl=en)
     * Outlook, _Subscribe to a calendar_ section: [support.microsoft.com](https://support.microsoft.com/en-us/topic/cff1429c-5af6-41ec-a5b4-74f2c278e98c)
+
+    For additional options to this endpoint please see the [Options section](#options)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -137,6 +137,8 @@ Alternatively you can run the whole app on the host. This is described in the [H
     * Apple Calendar: [support.apple.com](https://support.apple.com/en-us/HT202361)
     * Google Calendar, _Use a link to add a public calendar_ section: [support.google.com](https://support.google.com/calendar/answer/37100?hl=en)
     * Outlook, _Subscribe to a calendar_ section: [support.microsoft.com](https://support.microsoft.com/en-us/topic/cff1429c-5af6-41ec-a5b4-74f2c278e98c)
+    
+    For additional options to this endpoint please see the [Options section](#options)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
