@@ -13,8 +13,7 @@
     },
     "CALENDAR_PASSWORD": {
       "description": "Password for the subscription endpoint. Set only if you want to have it",
-      "required": false,
-      "order": 3
+      "required": false
     }
   },
   "options": {
