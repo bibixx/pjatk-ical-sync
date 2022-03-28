@@ -22,7 +22,8 @@ export const login = async (cookieJar: CookieJar) => {
 
   const firstResponse = await fetch("https://planzajec.pjwstk.edu.pl/Logowanie.aspx", requestOptions)
   const [firstCookie] = firstResponse.headers.raw()['set-cookie'][0].split(';')
-  const nextLocation = firstResponse.headers.get("location")!
+  const nextLocation = firstResponse.headers.get("location")
+  if (!nextLocation) throw new Error('Missing location header!')
 
   cookieJar.setCookie(firstCookie);
 
