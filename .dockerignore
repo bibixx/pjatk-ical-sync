@@ -2,3 +2,9 @@ data
 logs
 .env
 dist
+node_modules/
+Dockerfile
+docker-compose.*.yml
+docker-compose.yml
+README.md
+.env.example
