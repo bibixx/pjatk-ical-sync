@@ -1,5 +1,5 @@
 import { CookieAccessInfo, CookieJar } from 'cookiejar';
-import fetch, { Headers } from 'node-fetch'
+import fetch, { Headers, RequestInit } from 'node-fetch'
 import { PASSWORD, USERNAME } from '../env';
 
 export const login = async (cookieJar: CookieJar) => {
@@ -13,11 +13,11 @@ export const login = async (cookieJar: CookieJar) => {
   urlencoded.append("ctl00$ContentPlaceHolder1$Login1$Password", PASSWORD!);
   urlencoded.append("ctl00$ContentPlaceHolder1$Login1$LoginButton", "Zaloguj");
 
-  const requestOptions = {
+  const requestOptions: RequestInit = {
     method: 'POST',
     headers: myHeaders,
     body: urlencoded,
-    redirect: 'manual' as const
+    redirect: 'manual'
   };
 
   const firstResponse = await fetch("https://planzajec.pjwstk.edu.pl/Logowanie.aspx", requestOptions)
