@@ -3,3 +3,4 @@ logs
 data
 docker-compose.yml
 dist
+node_modules/
