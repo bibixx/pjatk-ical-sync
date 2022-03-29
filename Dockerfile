@@ -11,4 +11,6 @@ RUN yarn run build
 
 CMD ["yarn", "run", "start"]
 
+ENV TZ="Europe/Warsaw"
+
 EXPOSE 8080
