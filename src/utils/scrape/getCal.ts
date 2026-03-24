@@ -1,6 +1,7 @@
 import fetch, { Headers } from 'node-fetch'
 import { Dayjs } from 'dayjs'
 import { CookieAccessInfo, CookieJar } from 'cookiejar'
+import { parseViewStateTokens } from './parseViewStateTokens'
 
 const formatDateSimple = (date: Dayjs) => date.format('DD.MM.YYYY')
 
@@ -23,14 +24,7 @@ export const getCal = async (cookieJar: CookieJar, from: Dayjs, to: Dayjs) => {
 
   const getResponse = await fetch("https://planzajec.pjwstk.edu.pl/TwojPlan.aspx", { headers: getHeaders });
   const html = await getResponse.text();
-
-  const viewStateMatch = html.match(/id="__VIEWSTATE" value="(.*?)"/);
-  const eventValidationMatch = html.match(/id="__EVENTVALIDATION" value="(.*?)"/);
-  const viewStateGenMatch = html.match(/id="__VIEWSTATEGENERATOR" value="(.*?)"/);
-
-  if (!viewStateMatch || !eventValidationMatch) {
-    throw new Error("Could not find VIEWSTATE tokens on the calendar page.");
-  }
+  const tokens = parseViewStateTokens(html);
 
   const postHeaders = new Headers();
   postHeaders.append("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0");
@@ -38,10 +32,10 @@ export const getCal = async (cookieJar: CookieJar, from: Dayjs, to: Dayjs) => {
   postHeaders.append("Cookie", cookieJar.getCookies(CookieAccessInfo.All).toValueString());
 
   const urlencoded = new URLSearchParams();
-  urlencoded.append("__VIEWSTATE", viewStateMatch[1]);
-  urlencoded.append("__EVENTVALIDATION", eventValidationMatch[1]);
-  if (viewStateGenMatch) {
-    urlencoded.append("__VIEWSTATEGENERATOR", viewStateGenMatch[1]);
+  urlencoded.append("__VIEWSTATE", tokens.viewState);
+  urlencoded.append("__EVENTVALIDATION", tokens.eventValidation);
+  if (tokens.viewStateGenerator) {
+    urlencoded.append("__VIEWSTATEGENERATOR", tokens.viewStateGenerator);
   }
   
   urlencoded.append("ctl00$ContentPlaceHolder1$DedykowanyPlanStudenta$DateRangeFromRadDatePicker$dateInput", formatDateSimple(from));

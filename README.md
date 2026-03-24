@@ -215,7 +215,11 @@ Distributed under the MIT License. See [`LICENSE.md`](./LICENSE.md) for more inf
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Acknowledgments
+- [@kpostekk](https://github.com/kpostekk) — [Overall code improvements](https://github.com/bibixx/pjatk-ical-sync/pull/1)
+- [@Diva-333](https://github.com/Diva-333) — [Updated scraper for 2026](https://github.com/bibixx/pjatk-ical-sync/pull/2)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
